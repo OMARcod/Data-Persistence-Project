@@ -25,8 +25,7 @@ public class DataManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        LoadScore();
-        LoadName();
+        LoadNameAndScore();
     }
 
     // Update is called once per frame
@@ -43,18 +42,18 @@ public class DataManager : MonoBehaviour
         public int PlayerScore;
     }
 
-    public void SaveScore()
+    public void SaveNameAndScore()
     {
         SaveData data = new SaveData();
         data.PlayerScore = PlayerScore;
+        data.PlayerName = PlayerName;
 
         string json = JsonUtility.ToJson(data);
 
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
-    } 
+    }
 
-
-    public bool LoadScore()
+    public void LoadNameAndScore()
     {
         string path = Application.persistentDataPath + "/savefile.json";
 
@@ -65,43 +64,13 @@ public class DataManager : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
             PlayerScore = data.PlayerScore;
-
-            return true;
-        }
-        else //or make it boolean .. return false if there is no path .. next function will check and will change the text
-        {
-            PlayerScore = 0;
-            return false;
-        }
-    }
-
-    public void SaveName()
-    {
-        SaveData data = new SaveData();
-        data.PlayerName = PlayerName;
-
-        string json = JsonUtility.ToJson(data);
-
-        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
-    }
-
-    public bool LoadName()
-    {
-        string path = Application.persistentDataPath + "/savefile.json";
-
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-
-            SaveData data = JsonUtility.FromJson<SaveData>(json);
-
             PlayerName = data.PlayerName;
-
-            return true;
         }
-        else //or make it boolean .. return false if there is no path .. next function will check and will change the text
+        else
         {
-            return false;
+            Debug.Log("PathNothFound");
         }
     }
 }
+
+

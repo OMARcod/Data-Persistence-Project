@@ -78,29 +78,13 @@ public class MainManager : MonoBehaviour
         ScoreText.text = $"Score : {m_Points}";
     }
 
-    void LoadHighScore()
-    {
-        string playerName;
-        int playerScore;
-
-        if (DataManager.Instance.LoadName() && DataManager.Instance.LoadScore())
-        {
-            playerName = DataManager.Instance.PlayerName;
-            playerScore = DataManager.Instance.PlayerScore;
-            HighScoreAndName.text = "Best Score: " + playerName + " : " + playerScore;
-        }
-        else
-        {
-            HighScoreAndName.text = "Best Score: " +  DataManager.Instance.PlayerName + " : 0";
-        }
-    }
+ 
 
     void UpdateNameAndHighScore()
     {
         
 
-        DataManager.Instance.LoadScore();
-        DataManager.Instance.LoadName();
+        //DataManager.Instance.LoadNameAndScore();
 
         oldScore = DataManager.Instance.PlayerScore;
         oldName = DataManager.Instance.PlayerName;
@@ -132,8 +116,7 @@ public class MainManager : MonoBehaviour
 
             DataManager.Instance.PlayerScore = newScore;
             DataManager.Instance.PlayerName = newName;
-            DataManager.Instance.SaveScore();
-            DataManager.Instance.SaveName();
+            DataManager.Instance.SaveNameAndScore();
             Debug.Log("The NewScore: "+ newScore + "> oldScore: " + oldScore + "\n the new Name,Score has been saved");
 
         }
