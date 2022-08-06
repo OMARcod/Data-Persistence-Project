@@ -577,8 +577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77518793b4db62488749c17e7e351e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerScore: 
+  PlayerScore: 0
   PlayerName: 
+  NewName: 
 --- !u!1 &1066730834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,5 +1366,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3a13aefb2151046bdcdd17df38a80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: {fileID: 1329932831}
+  InputPlayerName: {fileID: 1329932831}
   PlayerScore: {fileID: 198303404}
