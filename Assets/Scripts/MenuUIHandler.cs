@@ -12,7 +12,7 @@ public class MenuUIHandler : MonoBehaviour
 
     // Start is called before the first frame update
 
-    public InputField PlayerName;
+    public InputField InputPlayerName;
     public Text PlayerScore;
 
     void Start()
@@ -33,7 +33,8 @@ public class MenuUIHandler : MonoBehaviour
     public void StartNew()
     {
         //Save the name form the input filde
-        DataManager.Instance.PlayerName = PlayerName.text;
+        DataManager.Instance.NewName = InputPlayerName.text;
+        DataManager.Instance.PlayerName = InputPlayerName.text;
         SceneManager.LoadScene(1);
     }
 

@@ -41,7 +41,7 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint); //Learn
             }
         }
-        newName = DataManager.Instance.PlayerName;
+        newName = DataManager.Instance.NewName;
         UpdateNameAndHighScore();
 
     }   
@@ -82,9 +82,9 @@ public class MainManager : MonoBehaviour
 
     void UpdateNameAndHighScore()
     {
-        
 
-        //DataManager.Instance.LoadNameAndScore();
+
+        DataManager.Instance.LoadNameAndScore();
 
         oldScore = DataManager.Instance.PlayerScore;
         oldName = DataManager.Instance.PlayerName;
@@ -92,12 +92,14 @@ public class MainManager : MonoBehaviour
 
         if (newScore <= 0) //When there is no old Score
         {
-            Debug.Log("(newScore <= 0)..." + "NewScore: " + newScore + "|| NewName: " + newName + "|| OldScore: " + oldScore + "|| OldName: " + oldName);
+
+            Debug.Log("1(newScore <= 0)..." + "NewScore: " + newScore + "|| NewName: " + newName + "|| OldScore: " + oldScore + "|| OldName: " + oldName);
             HighScoreAndName.text = "Best Score: " + oldName + " : " + oldScore;
         }
         else //When there is an old Score
         {
-            Debug.Log("(newScore > 0)..." + "NewScore: " + newScore + "|| New Name: " + newName + "|| OldScore: " + oldScore + "|| OldName: " + oldName);
+
+            Debug.Log("2(newScore > 0)..." + "NewScore: " + newScore + "|| New Name: " + newName + "|| OldScore: " + oldScore + "|| OldName: " + oldName);
             HighScoreAndName.text = "Best Score: " + newName + " : " + newScore;
         }
     }

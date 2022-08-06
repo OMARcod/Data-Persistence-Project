@@ -12,6 +12,7 @@ public class DataManager : MonoBehaviour
 
     public int PlayerScore;
     public string PlayerName;
+    public string NewName;
 
     // Start is called before the first frame update
     private void Awake()
